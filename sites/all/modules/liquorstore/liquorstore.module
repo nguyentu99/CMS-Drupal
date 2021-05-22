@@ -1,0 +1,281 @@
+<?php
+/**
+ * hook menu
+ */
+function liquorstore_menu()
+{
+  $items = array();
+
+  $items['custom/add-to-cart/%commerce_product'] = array(
+    'type' => MENU_CALLBACK,
+    'title' => 'add to card',
+    'page callback' => 'liquorstore_add_to_card_callback',
+    'access arguments' => array('access content'),
+    'file' => 'liquorstore.inc',
+  );
+
+  $items['home'] = array(
+    'type' => MENU_CALLBACK,
+    'title' => 'home',
+    'page callback' => 'liquorstore_home_page_callback',
+    'access arguments' => array('access content'),
+    'file' => 'liquorstore.inc',
+  );
+
+  $items['about'] = array(
+    'type' => MENU_CALLBACK,
+    'title' => 'about',
+    'page callback' => 'liquorstore_about_page_callback',
+    'access arguments' => array('access content'),
+    'file' => 'liquorstore.inc',
+  );
+
+  $items['contact'] = array(
+    'type' => MENU_CALLBACK,
+    'title' => 'contact',
+    'page callback' => 'liquorstore_contact_page_callback',
+    'access arguments' => array('access content'),
+    'file' => 'liquorstore.inc',
+  );
+
+  $items['product'] = array(
+    'type' => MENU_CALLBACK,
+    'title' => 'product',
+    'page callback' => 'liquorstore_product_page_callback',
+    'access arguments' => array('access content'),
+    'file' => 'liquorstore.inc',
+  );
+
+  $items['blog'] = array(
+    'type' => MENU_CALLBACK,
+    'title' => 'blog',
+    'page callback' => 'liquorstore_blog_page_callback',
+    'access arguments' => array('access content'),
+    'file' => 'liquorstore.inc',
+  );
+
+  $items['admin/config/liquorstore/contact'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => t('_Giới Thiệu'),
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('liquorstore_config_contact_form'),
+    'access arguments' => array('liquorstore module'),
+    'file' => 'liquorstore.inc',
+  );
+
+  $items['admin/config/liquorstore/background'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => t('_Background'),
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('liquorstore_config_background_form'),
+    'access arguments' => array('liquorstore module'),
+    'file' => 'liquorstore.inc',
+  );
+
+  $items['admin/config/liquorstore/about'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => t('_About'),
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('liquorstore_config_about_form'),
+    'access arguments' => array('liquorstore module'),
+    'file' => 'liquorstore.inc',
+  );
+
+  $items['admin/config/liquorstore/service'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => '_Service',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('liquorstore_config_service_form'),
+    'access arguments' => array('liquorstore module'),
+    'file' => 'liquorstore.inc'
+  );
+
+  $items['admin/config/liquorstore/blog'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => '_Blog',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('liquorstore_config_blog_form'),
+    'access arguments' => array('liquorstore module'),
+    'file' => 'liquorstore.inc'
+  );
+
+  return $items;
+}
+
+
+function liquorstore_theme()
+{
+  $items = array();
+
+  //form liên hệ
+  $items = array(
+    'liquorstore_contact_form' => array(
+      'render element' => 'form',
+      'template' => 'liquorstore_contact_form',
+      'path' => drupal_get_path('module', 'liquorstore') . '/forms'
+    ),
+  );
+
+  //đăng nhập
+  $items['user_login'] = array(
+    'render element' => 'form',
+    'path' => drupal_get_path('themes', 'liquorstore_theme') . '/user-login',
+    'template' => 'page--user-login',
+    'preprocess functions' => array(
+      'liquorstore_preprocess_user_login'
+    ),
+  );
+  return $items;
+}
+
+function liquorstore_preprocess_user_login(&$variables) {
+  $variables['form'] = drupal_get_form('user_login');
+}
+
+
+/**
+ * tạo form
+ */
+function liquorstore_contact_form($form, &$form_state)
+{
+  $form['#attributes'] = array('class' => array('site-form'));
+  $form['name'] = array(
+    '#type' => 'textfield',
+    '#attributes' => array('class' => array('form-control valid'), 'placeholder' => 'Họ Tên'),
+    '#required' => TRUE,
+    '#theme_wrappers' => array()
+  );
+
+  $form['mail'] = array(
+    '#type' => 'textfield',
+    '#attributes' => array('class' => array('form-control valid'), 'placeholder' => 'Email'),
+    '#required' => TRUE,
+    '#theme_wrappers' => array()
+  );
+
+  $form['subject'] = array(
+    '#type' => 'textfield',
+    '#attributes' => array('class' => array('form-control valid'), 'placeholder' => 'Tiêu Đề'),
+    '#required' => TRUE,
+    '#theme_wrappers' => array()
+  );
+
+  $form['message'] = array(
+    '#type' => 'textarea',
+    '#attributes' => array('class' => array('form-control w-100'), 'placeholder' => 'Nội Dung'),
+    '#required' => TRUE,
+    '#cols' => 30,
+    '#rows' => 4,
+    '#theme_wrappers' => array()
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#attributes' => array('class' => array('btn btn-primary px-4 py-3')),
+    '#value' => 'Send Message'
+  );
+  return $form;
+}
+
+/**
+ * thêm dữ liệu vào database khi nhấn submit
+ */
+function liquorstore_contact_form_submit($form, &$form_state)
+{
+
+  try {
+    db_insert('contact')->fields(array(
+      'name' => $form_state['values']['name'],
+      'mail' => $form_state['values']['mail'],
+      'subject' => $form_state['values']['subject'],
+      'masage' => $form_state['values']['message'],
+    ))->execute();
+    drupal_set_message('Chúng tôi sẽ liên hệ với bạn sớm nhất');
+  } catch (Exception $ex) {
+    print_r($ex);
+    exit();
+    drupal_set_message('Lỗi không thành công');
+  }
+}
+
+/**
+ * Thêm font-awesome
+ */
+function liquorstore_preprocess_html(&$vars)
+{
+  // Add font awesome cdn.
+  drupal_add_css('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css', array(
+    'type' => 'external'
+  ));
+}
+
+
+/**
+ * thay thế theme có sẵn
+ */
+function liquorstore_menu_alter(&$items)
+{
+//  $items['taxonomy/term/%taxonomy_term']['page callback'] = 'liquorstore_node_render_view';
+//  $items['taxonomy/term/%taxonomy_term']['page arguments'] = array(2);
+
+  $items['node/%node']['page callback'] = 'liquorstore_node_render_view';
+  $items['node/%node']['page arguments'] = array(1);
+}
+
+function liquorstore_login_render_view(){
+
+}
+
+
+/**
+ * link template
+ */
+function liquorstore_node_render_view($node)
+{
+  global $user;
+  if (is_object($node)) {
+    $nid = $node->nid;
+  } else {
+    $node = node_load($node);
+  }
+  if (module_exists('metatag')) {
+    metatag_entity_view($node, 'node', 'full', NULL);
+  }
+
+  if ($node->type == 'blog') {
+    return _liquorstore_render_theme('module', 'liquorstore', 'templates/nodes/node--article.tpl.php', array('article' => $node));
+  }
+
+  if ($node->type == 'product') {
+    return _liquorstore_render_theme('module', 'liquorstore', 'templates/nodes/node--product.tpl.php', array('product' => $node));
+  }
+
+  return node_page_view($node);
+}
+
+/**
+ * render theme
+ */
+function _liquorstore_render_theme($type, $name, $path, $variables = array())
+{
+  $path_temp = drupal_get_path($type, $name);
+  return theme_render_template($path_temp . "/" . $path, $variables);
+}
+
+//overright theme_pager
+function liquorstore_pager($variables)
+{
+
+  if (isset($variables['element']) && is_int($variables['element'])) {
+    $html_id = drupal_html_id('pager-' . $variables['element']);
+    $prefix = '<div id="' . $html_id . '">';
+    $suffix = '</div>';
+
+    return $prefix . theme_pager($variables) . $suffix;
+  }
+
+  return theme_pager($variables);
+}
+
+
+

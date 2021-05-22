@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9f184aaf-edc2-45d7-8b10-b2e632d3cc9e" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="ProjectId" id="1prhJno5wbDynSi0LJBFE1hh2PN" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Lavavel/shopbanhanglaravel" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\projects\liquorstore\sites\default\files" />
+      <recent name="C:\xampp\htdocs\projects\liquorstore\sites\all\libraries" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\projects\liquorstore\sites\all\themes\liquorstore_theme\template" />
+      <recent name="C:\xampp\htdocs\projects\liquorstore\sites\all\modules\liquorstore\templates\nodes" />
+      <recent name="C:\xampp\htdocs\projects\liquorstore\sites\all\themes\liquorstore_theme\css" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9f184aaf-edc2-45d7-8b10-b2e632d3cc9e" name="Default Changelist" comment="" />
+      <created>1615947046498</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615947046498</updated>
+      <workItem from="1615947047712" duration="24616000" />
+      <workItem from="1616033168358" duration="24506000" />
+      <workItem from="1616277327478" duration="602000" />
+      <workItem from="1616930013643" duration="2456000" />
+      <workItem from="1616982544010" duration="10050000" />
+      <workItem from="1616999302305" duration="14489000" />
+      <workItem from="1617064863773" duration="134000" />
+      <workItem from="1617069114837" duration="24010000" />
+      <workItem from="1617267213067" duration="9092000" />
+      <workItem from="1617286675248" duration="4151000" />
+      <workItem from="1617331184640" duration="10433000" />
+      <workItem from="1617436443131" duration="14698000" />
+      <workItem from="1617849387528" duration="9450000" />
+      <workItem from="1617964101937" duration="1184000" />
+      <workItem from="1618370185624" duration="19000" />
+      <workItem from="1619025877245" duration="9493000" />
+      <workItem from="1619042610136" duration="17000" />
+      <workItem from="1619162814758" duration="679000" />
+      <workItem from="1619252906777" duration="4069000" />
+      <workItem from="1619341128508" duration="853000" />
+      <workItem from="1619577422737" duration="128000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
